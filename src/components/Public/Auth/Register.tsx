@@ -1,15 +1,7 @@
-import {
-  Anchor,
-  Button,
-  Container,
-  Paper,
-  PasswordInput,
-  Text,
-  TextInput,
-  Title,
-} from '@mantine/core'
+import { Anchor, Container, Text, Title } from '@mantine/core'
 import Link from 'next/link'
 import { routes } from '../../../misc/routes'
+import { RegisterForm } from './RegisterForm'
 
 export const Register = () => {
   return (
@@ -21,15 +13,7 @@ export const Register = () => {
           <Link href={routes['sign-in']}>Login</Link>
         </Anchor>
       </Text>
-
-      <Paper withBorder shadow="md" p={30} mt={30} radius="md">
-        <TextInput label="Login" placeholder="Your login" required />
-        <PasswordInput label="Password" placeholder="Your password" required mt="md" />
-        <PasswordInput label="Repeat Password" placeholder="Repeat Password" required mt="md" />
-        <Button fullWidth mt="xl">
-          Sign in
-        </Button>
-      </Paper>
+      <RegisterForm />
     </Container>
   )
 }
