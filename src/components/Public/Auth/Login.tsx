@@ -13,6 +13,7 @@ import {
 } from '@mantine/core'
 import Link from 'next/link'
 import { routes } from '../../../misc/routes'
+import { LoginForm } from './LoginForm'
 
 export const Login = () => {
   return (
@@ -24,15 +25,7 @@ export const Login = () => {
           <Link href={routes['sign-up']}>Create account</Link>
         </Anchor>
       </Text>
-
-      <Paper withBorder shadow="md" p={30} mt={30} radius="md">
-        <TextInput label="Login" placeholder="Your login" required />
-        <PasswordInput label="Password" placeholder="Your password" required mt="md" />
-
-        <Button fullWidth mt="xl">
-          Sign in
-        </Button>
-      </Paper>
+      <LoginForm />
     </Container>
   )
 }
