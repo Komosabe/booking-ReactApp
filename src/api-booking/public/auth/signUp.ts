@@ -1,5 +1,7 @@
 import axios from 'axios'
 import { z } from 'zod'
+import { API_URL } from '../../../misc/config/env'
+import { api } from '../../../lib/axios/config'
 
 export const signUpSchema = z
   .object({
@@ -15,4 +17,4 @@ export const signUpSchema = z
 export type TSignUpFormFields = z.infer<typeof signUpSchema>
 
 export const signUp = (data: TSignUpFormFields) =>
-  axios.post('http://localhost:5038/Users/register', data).then(({ data }) => data)
+  api.post(`${API_URL}/Users/register`, data).then(({ data }) => data)

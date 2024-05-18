@@ -10,6 +10,7 @@ import { routes } from '../../../misc/routes'
 import { TSignUpFormFields, signUp, signUpSchema } from '../../../api-booking/public/auth/signUp'
 
 import { Button, Paper, PasswordInput, TextInput } from '@mantine/core'
+import { API_URL } from '../../../misc/config/env'
 export const RegisterForm = () => {
   const {
     register,

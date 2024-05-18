@@ -1,18 +1,16 @@
 import React from 'react'
 
-import { createAxios } from '../lib/axios/config'
 import { theme } from '../../theme'
 import { MantineProvider, ColorSchemeScript } from '@mantine/core'
 import '@mantine/core/styles.css'
 import { ReactQueryProvider } from '../lib/react-query/provider'
 import { Toaster } from 'react-hot-toast'
+import { VerifyAuth } from '../components/common/Auth/VerifyAuth'
 
 export const metadata = {
   title: 'Mantine Next.js template',
   description: 'I am using Mantine with Next.js!',
 }
-createAxios()
-
 export default function RootLayout({ children }: { children: any }) {
   return (
     <html lang="en">
@@ -26,7 +24,10 @@ export default function RootLayout({ children }: { children: any }) {
       </head>
       <body>
         <ReactQueryProvider>
-          <MantineProvider theme={theme}>{children}</MantineProvider>
+          <MantineProvider theme={theme}>
+            <VerifyAuth>{children}</VerifyAuth>
+            {/* {children} */}
+          </MantineProvider>
           <Toaster />
         </ReactQueryProvider>
       </body>

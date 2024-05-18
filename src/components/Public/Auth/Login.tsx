@@ -1,16 +1,5 @@
 'use client'
-import {
-  TextInput,
-  PasswordInput,
-  Checkbox,
-  Anchor,
-  Paper,
-  Title,
-  Text,
-  Container,
-  Group,
-  Button,
-} from '@mantine/core'
+import { Anchor, Title, Text, Container } from '@mantine/core'
 import Link from 'next/link'
 import { routes } from '../../../misc/routes'
 import { LoginForm } from './LoginForm'
