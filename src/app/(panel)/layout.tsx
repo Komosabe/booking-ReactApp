@@ -5,7 +5,7 @@ import useUserStore from '../../misc/store/useUserStore'
 import { routes } from '../../misc/routes'
 import { useEffect } from 'react'
 import { DoubleNavbar } from '../../layout/app-layout/_components/DoubleNavbar'
-import { Group } from '@mantine/core'
+import { Box, Group } from '@mantine/core'
 
 type TUserPanelLayoutProps = {
   children: React.ReactNode
@@ -30,8 +30,22 @@ const UserPanelLayout = ({ children }: TUserPanelLayoutProps) => {
       }}
       justify="flex-start"
       align="flex-start"
+      wrap="nowrap"
+      gap={0}
     >
-      <DoubleNavbar /> {children}
+      <DoubleNavbar />
+      <Box
+        style={{
+          width: '100%',
+          height: '100%',
+          overflow: 'auto',
+          maxWidth: '900px',
+          margin: '0 auto',
+          padding: '20px',
+        }}
+      >
+        {children}
+      </Box>
     </Group>
   )
 }
