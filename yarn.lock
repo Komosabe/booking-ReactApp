@@ -187,6 +187,9 @@
 "@emotion/hash@^0.9.0":
   version "0.9.1"
 
+"@esbuild/darwin-arm64@0.19.12":
+  version "0.19.12"
+
 "@eslint-community/eslint-utils@^4.2.0":
   version "4.4.0"
   dependencies:
@@ -327,10 +330,8 @@
   dependencies:
     glob "10.3.10"
 
-"@next/swc-win32-x64-msvc@14.1.3":
+"@next/swc-darwin-arm64@14.1.3":
   version "14.1.3"
-  resolved "https://registry.npmjs.org/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-14.1.3.tgz"
-  integrity sha512-uC2DaDoWH7h1P/aJ4Fok3Xiw6P0Lo4ez7NbowW2VGNXw/Xv6tOuLUcxhBYZxsSUJtpeknCi8/fvnSpyCFp4Rcg==
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
@@ -359,6 +360,9 @@
     picocolors "^1.0.0"
     tiny-glob "^0.2.9"
     tslib "^2.4.0"
+
+"@rollup/rollup-darwin-arm64@4.13.0":
+  version "4.13.0"
 
 "@rushstack/eslint-patch@^1.3.3":
   version "1.5.1"
@@ -1582,6 +1586,12 @@ form-data@^4.0.0:
 fs.realpath@^1.0.0:
   version "1.0.0"
 
+fsevents@~2.3.2:
+  version "2.3.2"
+
+fsevents@~2.3.3:
+  version "2.3.3"
+
 function-bind@^1.1.1:
   version "1.1.1"
 
@@ -2477,6 +2487,11 @@ react-hot-toast@^2.4.1:
   dependencies:
     goober "^2.1.10"
 
+react-icons@^5.2.1:
+  version "5.2.1"
+  resolved "https://registry.npmjs.org/react-icons/-/react-icons-5.2.1.tgz"
+  integrity sha512-zdbW5GstTzXaVKvGSyTaBalt7HSfuK5ovrzlpyiWHAFXndXTdd/1hdDHI4xBM1Mn7YriT6aqESucFl9kEXzrdw==
+
 react-is@^16.13.1:
   version "16.13.1"
 
@@ -2514,7 +2529,7 @@ react-textarea-autosize@8.5.3:
     use-composed-ref "^1.3.0"
     use-latest "^1.2.1"
 
-"react@^0.14 || ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react@^16.8.0 || ^17 || ^18", "react@^16.8.0 || ^17.0.0 || ^18.0.0", react@^18.0.0, react@^18.2.0, "react@>= 16", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0", react@>=16, react@>=16.8, react@>=16.8.0, react@18.2.0:
+react@*, "react@^0.14 || ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react@^16.8.0 || ^17 || ^18", "react@^16.8.0 || ^17.0.0 || ^18.0.0", react@^18.0.0, react@^18.2.0, "react@>= 16", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0", react@>=16, react@>=16.8, react@>=16.8.0, react@18.2.0:
   version "18.2.0"
   dependencies:
     loose-envify "^1.1.0"

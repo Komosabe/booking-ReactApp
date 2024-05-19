@@ -1,29 +1,39 @@
-'use client';
+'use client'
 
-import { useRouter } from 'next/navigation';
-import useUserStore from '../../misc/store/useUserStore';
-import { routes } from '../../misc/routes';
-import { useEffect } from 'react';
-import { DoubleNavbar } from '../../components/DoubleNavbar/DoubleNavbar';
-import { Group } from '@mantine/core';
+import { useRouter } from 'next/navigation'
+import useUserStore from '../../misc/store/useUserStore'
+import { routes } from '../../misc/routes'
+import { useEffect } from 'react'
+import { DoubleNavbar } from '../../layout/app-layout/_components/DoubleNavbar'
+import { Group } from '@mantine/core'
 
 type TUserPanelLayoutProps = {
-  children: React.ReactNode;
-};
+  children: React.ReactNode
+}
 
 const UserPanelLayout = ({ children }: TUserPanelLayoutProps) => {
-  const { user } = useUserStore();
-  const router = useRouter();
+  const { user } = useUserStore()
+  const router = useRouter()
 
   useEffect(() => {
     if (!user) {
-      router.replace(routes['index']);
+      router.replace(routes['index'])
     }
-  }, [user]);
+  }, [user])
 
-  if (!user) return null;
+  if (!user) return null
 
-  return <Group> <DoubleNavbar/> {children}</Group>;
-};
+  return (
+    <Group
+      style={{
+        height: '100vh',
+      }}
+      justify="flex-start"
+      align="flex-start"
+    >
+      <DoubleNavbar /> {children}
+    </Group>
+  )
+}
 
-export default UserPanelLayout;
+export default UserPanelLayout

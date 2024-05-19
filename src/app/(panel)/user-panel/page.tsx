@@ -1,16 +1,14 @@
-"use client";
+'use client'
 
-import React from 'react';
-import { DoubleNavbar } from '../../../components/DoubleNavbar/DoubleNavbar';
+import React from 'react'
+import { DoubleNavbar } from '../../../layout/app-layout/_components/DoubleNavbar'
 
 const DashboardPage = () => {
   return (
     <div>
-      <h1>
-        Hi!
-      </h1>
+      <h1>Hi!</h1>
     </div>
-  );
-};
+  )
+}
 
-export default DashboardPage;
+export default DashboardPage
