@@ -1,7 +1,16 @@
-import React from 'react'
+"use client";
 
-const page = () => {
-  return <div>Po zalogowaniu</div>
-}
+import React from 'react';
+import { DoubleNavbar } from '../../../components/DoubleNavbar/DoubleNavbar';
 
-export default page
+const DashboardPage = () => {
+  return (
+    <div>
+      <h1>
+        Hi!
+      </h1>
+    </div>
+  );
+};
+
+export default DashboardPage;
