@@ -32,6 +32,11 @@ const UserPanelLayout = ({ children }: TUserPanelLayoutProps) => {
       align="flex-start"
       wrap="nowrap"
       gap={0}
+      styles={{
+        root: {
+          backgroundColor: '#E2EDFF',
+        },
+      }}
     >
       <DoubleNavbar />
       <Box

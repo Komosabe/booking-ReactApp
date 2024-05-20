@@ -1,6 +1,6 @@
 'use client'
 import { useState } from 'react'
-import { Button, Group, Modal, NumberInput, Stack, TextInput, Title } from '@mantine/core'
+import { Button, Card, Group, Modal, NumberInput, Stack, TextInput, Title } from '@mantine/core'
 import { FormProvider, useForm } from 'react-hook-form'
 import {
   TCreateHallFormFields,
@@ -16,10 +16,12 @@ export const HallTitleWithButtonAndFormModal = () => {
   const [modalOpened, setModalOpened] = useState(false)
   return (
     <>
-      <Group justify="space-between">
-        <Title order={1}>Lista miejsc</Title>
-        <Button onClick={() => setModalOpened(true)}>Dodaj</Button>
-      </Group>
+      <Card>
+        <Group justify="space-between">
+          <Title order={1}>Lista miejsc</Title>
+          <Button onClick={() => setModalOpened(true)}>Dodaj</Button>
+        </Group>
+      </Card>
       <AddHallFormModal opened={modalOpened} onClose={() => setModalOpened(false)} />
     </>
   )
