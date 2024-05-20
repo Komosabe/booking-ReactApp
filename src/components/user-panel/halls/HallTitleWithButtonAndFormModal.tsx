@@ -1,11 +1,16 @@
 'use client'
 import { useState } from 'react'
 import { Button, Group, Modal, NumberInput, Stack, TextInput, Title } from '@mantine/core'
-import { useForm } from 'react-hook-form'
-import { TCreateHallFormFields, createHall, createHallSchema } from '../../../api-booking/user-panel/halls/createHall'
+import { FormProvider, useForm } from 'react-hook-form'
+import {
+  TCreateHallFormFields,
+  createHall,
+  createHallSchema,
+} from '../../../api-booking/user-panel/halls/createHall'
 import { zodResolver } from '@hookform/resolvers/zod'
 import toast from 'react-hot-toast'
 import { useMutation } from '@tanstack/react-query'
+import { InputNumber } from '../../common/inputs/InputNumber'
 
 export const HallTitleWithButtonAndFormModal = () => {
   const [modalOpened, setModalOpened] = useState(false)
@@ -25,16 +30,16 @@ type TAddHallFormModalProps = {
   onClose: () => void
 }
 
-
 const AddHallFormModal = ({ onClose, opened }: TAddHallFormModalProps) => {
-
-  const { register, handleSubmit } = useForm<TCreateHallFormFields>({
+  const methods = useForm<TCreateHallFormFields>({
     resolver: zodResolver(createHallSchema),
   })
+  const { register, handleSubmit, formState } = methods
 
   const { mutate, isPending } = useMutation({
     mutationFn: createHall,
     onSuccess: () => {
+      methods.reset()
       toast.success('Hall created')
       onClose()
     },
@@ -46,18 +51,22 @@ const AddHallFormModal = ({ onClose, opened }: TAddHallFormModalProps) => {
 
   return (
     <Modal opened={opened} onClose={onClose} title="Nowe miejsce">
-      <form onSubmit={onsubmit}>
-        <Stack gap={'xs'}>
-          <TextInput {...register('name')} placeholder="Nazwa miejsca" />
-          <NumberInput {...register('capacity')} min={0} placeholder="Liczba miejsc" />
-          <Group w={"100%"} wrap={"nowrap"} gap={"xs"}>
-            <Button fullWidth color="blue" variant="outline" onClick={onClose}>
-              Anuluj
-            </Button>
-            <Button fullWidth color="blue" type='submit' disabled={isPending} loading={isPending}>Dodaj</Button>
-          </Group>
-        </Stack>
-      </form>
+      <FormProvider {...methods}>
+        <form onSubmit={onsubmit}>
+          <Stack gap={'xs'}>
+            <TextInput {...register('hallName')} placeholder="Nazwa miejsca" />
+            <InputNumber name="capacity" min={0} placeholder="Liczba miejsc" />
+            <Group w={'100%'} wrap={'nowrap'} gap={'xs'}>
+              <Button fullWidth color="blue" variant="outline" onClick={onClose}>
+                Anuluj
+              </Button>
+              <Button fullWidth color="blue" type="submit" disabled={isPending} loading={isPending}>
+                Dodaj
+              </Button>
+            </Group>
+          </Stack>
+        </form>
+      </FormProvider>
     </Modal>
   )
 }
