@@ -46,7 +46,7 @@ export function DoubleNavbar() {
       <div className={classes.footer}>
         <a href="#" className={classes.link} onClick={(event) => event.preventDefault()}>
           <TbLogout className={classes.linkIcon} />
-          <span>Logout</span>
+          <span>Wylogowanie</span>
         </a>
       </div>
     </nav>

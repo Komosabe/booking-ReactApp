@@ -9,8 +9,10 @@ import {
 } from '../../../api-booking/user-panel/halls/createHall'
 import { zodResolver } from '@hookform/resolvers/zod'
 import toast from 'react-hot-toast'
-import { useMutation } from '@tanstack/react-query'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { InputNumber } from '../../common/inputs/InputNumber'
+import { InputText } from '../../common/inputs/InputText'
+import { GET_HALLS_QUERY_KEY } from '../../../api-booking/user-panel/halls/getHalls'
 
 export const HallTitleWithButtonAndFormModal = () => {
   const [modalOpened, setModalOpened] = useState(false)
@@ -38,12 +40,17 @@ const AddHallFormModal = ({ onClose, opened }: TAddHallFormModalProps) => {
   })
   const { register, handleSubmit, formState } = methods
 
+  const clientQuerry = useQueryClient()
+
   const { mutate, isPending } = useMutation({
     mutationFn: createHall,
     onSuccess: () => {
       methods.reset()
       toast.success('Hall created')
       onClose()
+      clientQuerry.invalidateQueries({
+        queryKey: GET_HALLS_QUERY_KEY,
+      })
     },
   })
 
@@ -56,7 +63,7 @@ const AddHallFormModal = ({ onClose, opened }: TAddHallFormModalProps) => {
       <FormProvider {...methods}>
         <form onSubmit={onsubmit}>
           <Stack gap={'xs'}>
-            <TextInput {...register('hallName')} placeholder="Nazwa miejsca" />
+            <InputText name="hallName" placeholder="Nazwa miejsca" />
             <InputNumber name="capacity" min={0} placeholder="Liczba miejsc" />
             <Group w={'100%'} wrap={'nowrap'} gap={'xs'}>
               <Button fullWidth color="blue" variant="outline" onClick={onClose}>
