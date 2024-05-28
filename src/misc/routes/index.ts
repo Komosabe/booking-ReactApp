@@ -10,7 +10,7 @@ export const routes = {
   hall: (id = ':hallId') => `/user-panel/halls/${id}`,
 
   //concerts
-  concerts: 'user-panel/concerts',
+  concerts: '/user-panel/concerts',
   concert: (id = ':concertId') => `/user-panel/concerts/${id}`,
 
   //Reservations

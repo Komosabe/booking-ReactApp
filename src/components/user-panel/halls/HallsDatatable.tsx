@@ -14,7 +14,7 @@ import {
 } from '@mantine/core'
 import { GET_HALLS_QUERY_KEY, useGetHalls } from '../../../api-booking/user-panel/halls/getHalls'
 import { TbPencil, TbTrash } from 'react-icons/tb'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { deleteHall } from '../../../api-booking/user-panel/halls/deleteHall'
 import { IconAdjustments } from '@tabler/icons-react'
@@ -29,6 +29,7 @@ import { on } from 'events'
 import toast from 'react-hot-toast'
 import { InputNumber } from '../../common/inputs/InputNumber'
 import { InputText } from '../../common/inputs/InputText'
+import { useGetHallById } from '../../../api-booking/user-panel/halls/getHallById'
 
 const DATATBLE_HEADERS = ['Nazwa', 'Pojemność', '']
 export const HallsDatatable = () => {
@@ -59,7 +60,11 @@ export const HallsDatatable = () => {
                 <Table.Td>
                   <Group justify="flex-end" wrap="nowrap">
                     <DeleteButtonWithModal hallId={hall.id} />
-                    <EditButtonWithModal hallId={hall.id} />
+                    <EditButtonWithModal
+                      hallId={hall.id}
+                      hallName={hall.hallName}
+                      capacity={hall.capacity}
+                    />
                   </Group>
                 </Table.Td>
               </Table.Tr>
@@ -114,14 +119,26 @@ const DeleteButtonWithModal = ({ hallId }: { hallId: number }) => {
   )
 }
 
-const EditButtonWithModal = ({ hallId }: { hallId: number }) => {
+const EditButtonWithModal = ({
+  hallId,
+  hallName,
+  capacity,
+}: {
+  hallId: number
+  hallName: string
+  capacity: number
+}) => {
   const [opened, setOpened] = useState(false)
 
   const methods = useForm<TEditHallFormFields>({
     resolver: zodResolver(editHallSchema),
+    values: {
+      hallName: hallName || '',
+      capacity: capacity || 0,
+    },
   })
 
-  const { register, handleSubmit, formState } = methods
+  const { handleSubmit, setValue } = methods
 
   const queryClient = useQueryClient()
 
