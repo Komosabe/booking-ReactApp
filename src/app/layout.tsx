@@ -6,6 +6,7 @@ import '@mantine/core/styles.css'
 import { ReactQueryProvider } from '../lib/react-query/provider'
 import { Toaster } from 'react-hot-toast'
 import { VerifyAuth } from '../components/common/Auth/VerifyAuth'
+import '@mantine/dates/styles.css'
 
 export const metadata = {
   title: 'Mantine Next.js template',

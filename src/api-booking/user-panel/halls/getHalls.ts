@@ -6,6 +6,7 @@ export type THall = {
   id: number
   hallName: string
   capacity: number
+  isEditable: boolean
 }
 
 export const GET_HALLS_QUERY_KEY = ['getHalls']

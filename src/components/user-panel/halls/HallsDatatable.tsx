@@ -59,12 +59,14 @@ export const HallsDatatable = () => {
                 <Table.Td>{hall.capacity ?? '-'}</Table.Td>
                 <Table.Td>
                   <Group justify="flex-end" wrap="nowrap">
-                    <DeleteButtonWithModal hallId={hall.id} />
-                    <EditButtonWithModal
-                      hallId={hall.id}
-                      hallName={hall.hallName}
-                      capacity={hall.capacity}
-                    />
+                    {hall.isEditable ? <DeleteButtonWithModal hallId={hall.id} /> : null}
+                    {hall.isEditable ? (
+                      <EditButtonWithModal
+                        hallId={hall.id}
+                        hallName={hall.hallName}
+                        capacity={hall.capacity}
+                      />
+                    ) : null}
                   </Group>
                 </Table.Td>
               </Table.Tr>

@@ -11,7 +11,7 @@ const data = [
   { link: routes['reservations'], label: 'Rezerwacje', icon: TbBook },
   { link: routes['concerts'], label: 'Koncerty', icon: TbBalloon },
   { link: routes['halls'], label: 'Miejsca', icon: TbBuilding },
-  { link: '', label: 'Konto', icon: TbUser },
+  // { link: routes['users'], label: 'Konto', icon: TbUser },
 ]
 
 export function DoubleNavbar() {

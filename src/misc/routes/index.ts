@@ -15,4 +15,7 @@ export const routes = {
 
   //Reservations
   reservations: '/user-panel/reservations',
+
+  //Users
+  users: '/user-panel/users',
 }

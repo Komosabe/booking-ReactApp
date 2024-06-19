@@ -8,6 +8,9 @@ export type TConcert = {
   artistName: string
   dateTime: string
   hallId: number
+  isEditable: boolean
+  maxReservations: number
+  currentReservations: number
 }
 
 export const GET_CONCERTS_QUERY_KEY = ['getConcerts']

@@ -12,6 +12,9 @@ import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { GET_CONCERTS_QUERY_KEY } from '../../../api-booking/user-panel/concerts/getConcerts'
 import toast from 'react-hot-toast'
 import { InputText } from '../../common/inputs/InputText'
+import { InputSelect } from '../../common/inputs/InputSelect'
+import { useGetHalls } from '../../../api-booking/user-panel/halls/getHalls'
+import { InputDateTimePicker } from '../../common/inputs/InputDateTimePicker'
 
 export const ConcertTitleWithButtonAndFormModal = () => {
   const [modalOpened, setModalOpened] = useState(false)
@@ -42,6 +45,8 @@ const AddConcertFormModal = ({ onClose, opened }: TAddConcertFormModalProps) => 
 
   const clientQuerry = useQueryClient()
 
+  const { data, isLoading } = useGetHalls()
+
   const { mutate, isPending } = useMutation({
     mutationFn: createConcert,
     onSuccess: () => {
@@ -58,6 +63,12 @@ const AddConcertFormModal = ({ onClose, opened }: TAddConcertFormModalProps) => 
     mutate(data)
   })
 
+  const halls = isLoading
+    ? []
+    : data?.map((hall) => ({ label: hall.hallName, value: hall.id.toString() }))
+
+  console.log(methods.getValues())
+
   return (
     <Modal opened={opened} onClose={onClose} title="Nowy koncert">
       <FormProvider {...methods}>
@@ -65,8 +76,8 @@ const AddConcertFormModal = ({ onClose, opened }: TAddConcertFormModalProps) => 
           <Stack gap={'xs'}>
             <InputText name="ConcertName" placeholder="Nazwa koncertu" />
             <InputText name="ArtistName" placeholder="Nazwa artysty" />
-            <InputText name="DateTime" placeholder="Data i godzina" />
-            <InputText name="HallId" placeholder="Id sali" />
+            <InputDateTimePicker name="DateTime" placeholder="Data i godzina" />
+            <InputSelect name="HallId" placeholder="Sala" data={halls} />
             <Group w={'100%'} wrap={'nowrap'} gap={'xs'}>
               <Button fullWidth color="blue" variant="outline" onClick={onClose}>
                 Anuluj
